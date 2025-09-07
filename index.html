@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Role Management - Cash Calculator</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-wallet header-icon"></i>
+                <h1>Pay Role Management</h1>
+                <p class="subtitle">Calculate Minimum Notes for Change</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Form Section -->
+            <section class="input-section">
+                <div class="form-container">
+                    <h2 class="section-title">
+                        <i class="fas fa-calculator"></i>
+                        Enter Transaction Details
+                    </h2>
+                    
+                    <form id="cashForm" class="cash-form">
+                        <div class="form-group">
+                            <label for="billAmount">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                Bill Amount (₹)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="billAmount" 
+                                placeholder="Enter bill amount"
+                                step="1"
+                                min="0"
+                                required
+                            >
+                            <span class="error-text" id="billError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cashGiven">
+                                <i class="fas fa-money-bill-wave"></i>
+                                Cash Given (₹)
+                            </label>
+                            <input 
+                                type="number" 
+                                id="cashGiven" 
+                                placeholder="Enter cash given"
+                                step="1"
+                                min="0"
+                                required
+                            >
+                            <span class="error-text" id="cashError"></span>
+                        </div>
+
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-check-circle"></i>
+                                Calculate Change
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="resetBtn">
+                                <i class="fas fa-redo"></i>
+                                Reset
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Message Display -->
+            <div id="messageContainer" class="message-container"></div>
+
+            <!-- Results Section -->
+            <section id="resultsSection" class="results-section hidden">
+                <div class="results-container">
+                    <h2 class="section-title">
+                        <i class="fas fa-coins"></i>
+                        Change Breakdown
+                    </h2>
+                    
+                    <div class="change-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">Bill Amount:</span>
+                            <span class="summary-value" id="displayBill">₹0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">Cash Given:</span>
+                            <span class="summary-value" id="displayCash">₹0</span>
+                        </div>
+                        <div class="summary-item highlight">
+                            <span class="summary-label">Change to Return:</span>
+                            <span class="summary-value" id="displayChange">₹0</span>
+                        </div>
+                    </div>
+
+                    <div class="notes-table-container">
+                        <table class="notes-table" id="notesTable">
+                            <thead>
+                                <tr>
+                                    <th>Note/Coin</th>
+                                    <th>Count</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="notesTableBody">
+                                <!-- Dynamic content will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="total-notes">
+                        <i class="fas fa-money-check-alt"></i>
+                        Total Notes/Coins: <span id="totalNotesCount">0</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Pay Role Management System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
